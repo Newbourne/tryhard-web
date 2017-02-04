@@ -1,0 +1,6 @@
+@import './../../../css/variables/index.css';
+
+.header {
+    text-align: center;
+    border: 5px solid $colorDark;
+}

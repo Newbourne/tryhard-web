@@ -1,0 +1,13 @@
+@import './../../../css/variables/index.css';
+
+.playerContainer {
+    margin: 1em auto 3em auto;
+}
+.playerFlex {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}

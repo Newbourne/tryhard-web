@@ -1,0 +1,27 @@
+html {
+    font-size: 1.3rem;
+    @media (--tablet) {
+        & {
+            font-size: 1.4rem;
+        }
+    }  
+    @media (--desktop) {
+        & {
+            font-size: 1.5rem;
+        }
+    } 
+}
+body {
+    margin: 0;
+    padding: 0;
+    color: $colorDarkest;
+    background-color: $colorBase;
+    font-family: $font-family;
+}
+h1, h2, h3, h4, h5, p, section, canvas {
+    margin: 0;
+    padding: 0;
+}
+input, input:hover, input:active {
+   outline: 0;
+}

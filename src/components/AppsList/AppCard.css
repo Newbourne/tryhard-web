@@ -1,0 +1,17 @@
+@import './../../../css/variables/index.css';
+
+.appBox {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100px;
+    margin: 0.25em;
+    padding: 0em;
+    align-self: center;
+    border: 5px solid $colorDarkest;
+    line-height: 2em;    
+}
+
+.appBox img {
+	width: 100%;
+	height: 100%;
+}

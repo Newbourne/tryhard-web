@@ -1,0 +1,10 @@
+@import './../../../css/variables/index.css';
+
+.logoContainer {
+    display: block;
+    border: 5px solid $colorDarkest;
+    color: $colorDarkest;
+    width: $app-width;   
+    margin: 0.5em auto;
+    text-align: center;
+}

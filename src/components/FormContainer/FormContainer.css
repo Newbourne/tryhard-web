@@ -1,0 +1,13 @@
+@import './../../../css/variables/index.css';
+
+.container {
+    margin-top: .25em;
+    margin-bottom: 1.5em;
+}
+.spacer {
+    padding-top: 1em;
+    border-top: .25em solid $colorDarkest;
+}
+.container > h3 {
+    text-align: center;
+}

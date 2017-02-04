@@ -1,0 +1,17 @@
+@import './../../../css/variables/index.css';
+
+.textBox {
+    display: block;
+    width: $app-width;   
+    text-align: center;
+    padding: 0.25em 0;
+    color: $colorDarkest;
+    background: $colorBase;
+    border: 5px solid $colorDarkest;
+    margin: 0.5em 0;
+    line-height: 2.5em;
+
+    &:active {
+        background-color: $colorLightest;
+    }
+}

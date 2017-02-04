@@ -1,0 +1,24 @@
+@import './../../../css/variables/index.css';
+
+.button {
+    display: block;
+    width: calc($app-width + 0.4);   
+    padding: 0.5em 0;
+    background-color: $colorBase;
+    color: $colorDarkest;
+    border: 5px solid $colorDarkest;
+    line-height: 2em;
+    &:hover {
+        background-color: $colorLightest;
+        color: $colorDarkest;
+    }
+    &:active {
+        background-color: $colorDarkest;
+        color: $colorBase;
+    }
+    &:disabled {
+        border: 5px solid $colorDark;
+        background-color: $colorBase;
+        color: $colorDark;
+    }
+}

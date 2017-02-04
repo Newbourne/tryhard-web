@@ -1,0 +1,14 @@
+@import './../../../css/variables/index.css';
+
+.list {
+    margin: 0 auto;
+}
+.listFlex {
+    height: 100%;
+    width: 100%;
+    margin: 25px auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}

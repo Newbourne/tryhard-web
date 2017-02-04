@@ -1,0 +1,7 @@
+@import './../../../../css/variables/index.css';
+
+.root {
+    margin: 0.5em auto;
+    padding: 0;
+    width: $app-width;   
+}

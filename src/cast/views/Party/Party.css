@@ -1,0 +1,9 @@
+.partyRoot {
+	height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.partyCode {
+    font-size: 4em;
+    /* composes: color-light from './../../styles/colors.css'; */
+}

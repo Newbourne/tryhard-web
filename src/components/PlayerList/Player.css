@@ -1,0 +1,15 @@
+@import './../../../css/variables/index.css';
+
+.playerBox {
+    flex: 0 0 auto;
+    margin: 0.25em;
+    padding: 0.5em;
+}
+.icon {
+    margin: 0.25em auto;
+    width: 2.5em;
+    height: 1.5em;     
+}
+.username {
+    text-align: center;    
+}
