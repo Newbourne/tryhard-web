@@ -1,4 +1,4 @@
-# Dimples Platform
+# TryHard Platform
 
 ### PoC Modular Gaming/Educational Platform for Chromecast
 
@@ -9,8 +9,8 @@
 - SystemJS / JSPM
 - Cast
 
-#### dimples-cast
+#### try-hard-cast
 Chromecast receiver host application container. WebSocket and API integration with dimples-api.
 
-#### dimples-client
+#### try-hard-client
 Chromecast sender application container. WebSocket and API integration with dimples-api.
