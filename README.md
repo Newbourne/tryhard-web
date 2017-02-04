@@ -9,8 +9,8 @@
 - SystemJS / JSPM
 - Cast
 
-#### try-hard-cast
+#### tryhard-cast
 Chromecast receiver host application container. WebSocket and API integration with dimples-api.
 
-#### try-hard-client
+#### tryhard-client
 Chromecast sender application container. WebSocket and API integration with dimples-api.
