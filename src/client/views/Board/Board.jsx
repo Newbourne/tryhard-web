@@ -15,7 +15,7 @@ class Board extends Component {
     const { app } = this.props
     return (
       <div id='client'>
-       {/* The client application should be loaded here */}
+        {/* The client application should be loaded here */}
       </div>
     )
   }

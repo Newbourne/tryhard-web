@@ -11,7 +11,7 @@ class FormContainer extends Component {
 
     return (
       <div className={cs}>
-          {children}
+        {children}
       </div>
     )
   }

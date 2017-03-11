@@ -2,7 +2,7 @@ import { Storage } from './../Common'
 import { Party, Socket } from './../Constants'
 
 import * as System from './System'
-import { ApiClient } from './../../api'
+import ApiClient from './../../tools/ApiClient'
 
 export function setCode (code) {
   return {
@@ -24,6 +24,7 @@ export function hostLobby (code) {
       .then((res) => {
         Storage.set(Party.STORAGE_CODE, res)
         dispatch(setCode(res))
+        dispatch(join(res, 'PRESENTER', false, true))
         dispatch(System.setProcessing(false))
       })
       .catch((err) => {
@@ -39,9 +40,9 @@ export function join (partyCode, username, isHost, isPresenter) {
       command: Party.CONNECT,
       player: {
         party_code: partyCode,
-        username: username
-        // is_host: isHost,
-        // is_presenter: isPresenter
+        username: username,
+        is_host: isHost,
+        is_presenter: isPresenter
       }
     }
   }

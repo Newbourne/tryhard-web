@@ -1,36 +1,62 @@
 import { ReduxBase, Storage } from './../Common'
-import { 
-  Player as PlayerConstants, 
-  Party as PartyConstants, 
+
+import {
+  Player as PlayerConstants,
+  Party as PartyConstants,
   System as SystemConstants,
   Socket as SocketConstants
 } from './../Constants'
-import { 
-  Player as PlayerActions, 
-  Party as PartyActions, 
+
+import {
+  Player as PlayerActions,
+  Party as PartyActions,
   System as SystemActions,
   Socket as SocketActions
 } from './../Actions'
-import { Init } from './../../api'
 
+import TryHardWebSocket from 'tryhard-websocket'
+
+/*
+  AppListener
+  Redux service integrator for platform api/websocket.
+*/
 export default class AppListener extends ReduxBase {
   constructor (baseUrl, store) {
     super(store)
-    let api = Init(baseUrl)
-    this.apiClient = api.client
-    this.apiSocket = api.socket
+    this.socket = new TryHardWebSocket({
+      url: "ws://" + baseUrl + "/connect",
+      protocol: null,
+      enableHeartbeat: true,
+      openObs: {
+        next: x => { 
+          this.dispatch(SocketActions.setStatus(SocketConstants.CONNECTED))
+          this.internalReconnect()
+        },
+        error: x => x,
+        complete: x => x
+      },
+      closeObs: {
+        next: () => {
+          this.dispatch(SocketActions.setStatus(SocketConstants.DISCONNECTED))
+          this.dispatch(PartyActions.setStatus(PartyConstants.DISCONNECTED))
+        },
+        error: x => x,
+        complete: x => x,
+      }
+    })
   }
   reduxListener () {
     const { LastAction } = this.store.getState()
 
     switch (LastAction && LastAction.type) {
       case SocketConstants.MESSAGE:
-        this.postMessage(JSON.stringify(LastAction.value))
+        this.sendMessage(LastAction.value)
         break
       case SocketConstants.RESPONSE:
         switch (LastAction.value.command) {
           case PartyConstants.CONNECTED:
             this.dispatch(PartyActions.setStatus(LastAction.value.command))
+            // syncs connected players on player connect
             var players = LastAction.value.players
             if (players) {
               for (var i = 0; i < players.length; i++) {
@@ -55,39 +81,29 @@ export default class AppListener extends ReduxBase {
     }
     // this.internalReconnect()
   }
-  // non-Exponential Backoff
-  // every 2 seconds for now
-  connect () {
+  connect() {
     this.store.subscribe(() => this.reduxListener())
-
-    this.apiSocket.onopen = (event) => {
-      this.dispatch(SocketActions.setStatus(SocketConstants.CONNECTED))
-      this.internalReconnect()
-    }
-
-    this.apiSocket.onmessage = (data) => {
-      this.dispatch(SocketActions.receivedMessage(data))
-      this.internalReconnect()
-    }
-
-    this.apiSocket.onerror = (event) => {
-      this.dispatch(SocketActions.setStatus(SocketConstants.FAILED))
-      this.dispatch(PartyActions.setStatus(PartyConstants.DISCONNECTED))
-      this.dispatch(SocketActions.setError(event))
-    }
-
-    this.apiSocket.onclose = (event) => {
-      this.dispatch(SocketActions.setStatus(SocketConstants.DISCONNECTED))
-      this.dispatch(PartyActions.setStatus(PartyConstants.DISCONNECTED))
-    }
-
-    this.apiSocket.connect()
+    this.socket.connect()
+    this.socket.subscribe({
+      next: msg => {
+        this.dispatch(SocketActions.receivedMessage(JSON.parse(msg.data)))
+      },
+      error: err => {
+        this.dispatch(SocketActions.setStatus(SocketConstants.FAILED))
+        this.dispatch(PartyActions.setStatus(PartyConstants.DISCONNECTED))
+        this.dispatch(SocketActions.setError(err))
+      },
+      complete: () => {
+        this.dispatch(SocketActions.setStatus(SocketConstants.DISCONNECTED))
+        this.dispatch(PartyActions.setStatus(PartyConstants.DISCONNECTED))
+      }
+    })
   }
-  postMessage (msg) {
-    this.apiSocket.send(msg)
+  sendMessage (msg) {
+    this.socket.sendJson(msg)
   }
   close () {
-    this.apiSocket.close()
+    this.socket.close()
   }
   // automatic rejoin presenter\client
   internalReconnect () {

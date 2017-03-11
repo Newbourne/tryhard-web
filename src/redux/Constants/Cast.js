@@ -1,7 +1,7 @@
 /* Actions */
 export const SET_STATUS 			= 'CAST_CONNECTION_STATUS'
 export const MESSAGE 				= 'CAST_MESSAGE'
-export const REQUEST_SESSION 		= 'CAST_REQUEST_SESSION'
+export const CONNECT 		        = 'CAST_CONNECT'
 export const ERROR 					= 'CAST_ERROR'
 
 /* States */

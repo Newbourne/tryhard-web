@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { AppLoadingDialog } from './../components'
 
-export default class AppComponent extends Component {
+class AppComponent extends Component {
   render () {
     const { isLoadingOpen, isLoadingText } = this.props
     return (

@@ -4,23 +4,23 @@ import { Root, Apps, Preview, Board, Error, NotFound, Home, Party } from './view
 
 export default (
   <Route path='/' component={Root}>
-      <IndexRoute component={Home} />
+    <IndexRoute component={Home} />
 
-      {/* Party */}
-      <Route path='party' component={Party} />
+    {/* Party */}
+    <Route path='party' component={Party} />
 
-      {/* Apps */}
-      <Route path='apps' component={Apps} />
+    {/* Apps */}
+    <Route path='apps' component={Apps} />
 
-      {/* Preview */}
-      <Route path='preview' component={Preview} />  
+    {/* Preview */}
+    <Route path='preview' component={Preview} />
 
-      {/* Board */}
-      <Route path='board' component={Board} />       
+    {/* Board */}
+    <Route path='board' component={Board} />
 
-      {/* Catch All, Not-Found, Error */}
-      <Route path='error' component={Error} />
-      <Route path='not-found' component={NotFound} />
-      <Route path='*' component={NotFound} />
+    {/* Catch All, Not-Found, Error */}
+    <Route path='error' component={Error} />
+    <Route path='not-found' component={NotFound} />
+    <Route path='*' component={NotFound} />
   </Route>
 )

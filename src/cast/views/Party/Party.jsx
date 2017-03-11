@@ -17,7 +17,7 @@ class Party extends Component {
       <div className={partyRoot}>
         <div>dimples.media</div>
         <div className={partyCodeText}>
-            {code}
+          {code}
         </div>
         <p>Waiting for players...</p>
         <PlayerList players={players} />

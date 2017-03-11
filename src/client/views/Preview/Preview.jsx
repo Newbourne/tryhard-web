@@ -12,7 +12,7 @@ class Apps extends Component {
     // get appId from router
     systemActions.getApp(1)
   }
-  start() {
+  start () {
     console.log('start app')
     const { routerActions } = this.props
     routerActions.push('/Board')

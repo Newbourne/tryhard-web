@@ -14,7 +14,7 @@ class AppCard extends Component {
     const { app } = this.props
     let cs = cx({ appBox: true })
 
-    let content = (!!app.icon) ? app.name : app.icon
+    let content = (app.icon) ? app.name : app.icon
 
     return (
       <div className={cs} onClick={this.onClick.bind(this)}>

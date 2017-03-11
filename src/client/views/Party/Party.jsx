@@ -35,7 +35,7 @@ class Party extends Component {
 
     return (
       <div>
-      <Logo />
+        <Logo />
         <div className={header}>
           <h3>Party</h3>
           <h1>{partyCode}</h1>
@@ -43,7 +43,7 @@ class Party extends Component {
         </div>
         <PlayerList players={players} />
         <div>
-        {isHost
+          {isHost
           ? <Button
             hidden={false}
             disabled={false}

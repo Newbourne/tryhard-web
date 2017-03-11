@@ -1,4 +1,4 @@
-import 'core-js/shim';
+import 'core-js/shim'
 import * as ActionsImport from './Actions/index'
 import * as ConstantsImport from './Constants/index'
 import * as ListenersImport from './Listeners/index'

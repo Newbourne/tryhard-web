@@ -16,11 +16,11 @@ class Host extends Component {
     castActions.requestSession()
   }
   render () {
-    const { chromeCastStatus } = this
+    const { chromeCastStatus } = this.props
     let disabledState = true
     let chromeCastConnected = false
 
-    var body
+    var body = ''
 
     if (chromeCastStatus === Constants.Cast.AVAILABLE ||
       chromeCastStatus === Constants.Cast.INIT_COMPLETE) {

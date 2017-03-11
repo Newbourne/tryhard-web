@@ -7,9 +7,9 @@ import styles from './AppPreview.css'
 var cx = classNames.bind(styles)
 
 class Preview extends Component {
-  drawRequirements() {
+  drawRequirements () {
     const { requirements } = this.props.app
-    if (!requirements){
+    if (!requirements) {
       return ''
     }
     return requirements.map((req, i) => {
@@ -19,7 +19,7 @@ class Preview extends Component {
     })
   }
 
-  drawPreview() {
+  drawPreview () {
     const { hasPreview } = this.props.app
     if (!hasPreview) {
       return ''
@@ -36,7 +36,7 @@ class Preview extends Component {
 
     if (!app) {
       console.log('render Preview', app)
-      return (<div/>)
+      return (<div />)
     }
 
     var requirements = this.drawRequirements()
@@ -49,7 +49,7 @@ class Preview extends Component {
         </div>
         <div>
           {app.description}
-        </div>     
+        </div>
         <div>
           <ul>
             {requirements}
@@ -59,8 +59,8 @@ class Preview extends Component {
           {preview}
         </div>
         <div>
-          <Button value="Play" onClick={start.bind(this)}/>
-        </div>        
+          <Button value='Play' onClick={start.bind(this)} />
+        </div>
       </div>
     )
   }

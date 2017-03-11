@@ -11,7 +11,7 @@ class Apps extends Component {
     const { systemActions } = this.props
     systemActions.getApps()
   }
-  select(appId) {
+  select (appId) {
     // add appId to the route.
     const { routerActions } = this.props
     routerActions.push('/preview')

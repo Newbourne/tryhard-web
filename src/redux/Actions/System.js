@@ -1,6 +1,6 @@
 import { System as C } from './../Constants'
 
-import { ApiClient } from './../../api'
+import ApiClient from './../../tools/ApiClient'
 
 export function setProcessing (state) {
   return {
@@ -32,6 +32,7 @@ export function getApps () {
     dispatch(setProcessing(true))
     client.getApps()
       .then((res) => {
+        console.log('received apps', res)
         dispatch(updateApps(res))
         dispatch(setProcessing(false))
       })

@@ -17,7 +17,7 @@ class Error extends Component {
         <p>An unexpected error has occurred. Hopefully, this has been
         reported and I will be able to fix in a timely fashion. </p>
         <p>
-            {error}
+          {error}
         </p>
       </div>
     )

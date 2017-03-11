@@ -19,8 +19,8 @@ class List extends Component {
     let list = cx({ list: true })
     let listFlex = cx({ listFlex: true })
     let renderApps = ''
-    if (apps && apps.length > 0){
-      renderApps = this.renderApps(apps, select) 
+    if (apps && apps.length > 0) {
+      renderApps = this.renderApps(apps, select)
     }
 
     return (
